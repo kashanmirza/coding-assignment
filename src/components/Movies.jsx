@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const Movies = () => {
   const { movies } = useSelector((state) => state);
   return (
-    <div data-testid="movies">
+    <div data-testid="movies" className="movies-container">
       {movies &&
         movies?.movies?.results?.map((movie) => {
           return (
