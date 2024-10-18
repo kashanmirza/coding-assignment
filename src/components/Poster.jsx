@@ -1,7 +1,7 @@
 import placeholder from "../assets/not-found-500X750.jpeg";
 
 const Poster = ({ movie }) => {
-  const { poster_path, title } =  movie
+  const { poster_path, title } = movie;
   return (
     <img
       className="center-block"

@@ -2,29 +2,35 @@ import { Link, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react"; // Import useState
 import { createSearchParams, useSearchParams } from "react-router-dom";
-import { fetchMovies } from "../data/moviesSlice";
+import moviesSlice, { fetchMovies } from "../data/moviesSlice";
 import "../styles/header.scss";
 
-const Header = ({ searchMovies }) => {
+const Header = () => {
+  const dispatch = useDispatch();
   const { starredMovies } = useSelector((state) => state.starred);
+  const { resetMovies } = moviesSlice.actions;
   const [query, setQuery] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
-  const dispatch = useDispatch();
 
   const getSearchResults = (query) => {
-    dispatch(fetchMovies(query));
+    dispatch(resetMovies());
+    dispatch(fetchMovies({ query, page: 1 }));
   };
 
   useEffect(() => {
-    getSearchResults(query);
-    setSearchParams(
-      query ? createSearchParams({ search: query }) : createSearchParams({})
-    );
+    console.log("Header : ", query);
+    if (query) {
+      getSearchResults(query);
+      setSearchParams(createSearchParams({ search: query }));
+    } else {
+      dispatch(resetMovies());
+      dispatch(fetchMovies({ query: "", page: 1 }));
+    }
   }, [query]);
 
   return (
     <header>
-      <Link to="/" data-testid="home" onClick={() => searchMovies("")}>
+      <Link to="/" data-testid="home">
         <i className="bi bi-film" />
       </Link>
 

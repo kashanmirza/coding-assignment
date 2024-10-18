@@ -5,7 +5,6 @@ import WatchLaterToggle from "./WatchLaterToggle";
 import ViewTrailerButton from "./ViewTrailerButton";
 
 const Movie = ({ movie }) => {
-
   return (
     <div className="wrapper col-3 col-sm-4 col-md-3 col-lg-3 col-xl-2">
       <div className={`card card-${movie?.id}`}>
@@ -27,7 +26,6 @@ const Movie = ({ movie }) => {
 
         <h6 className="title mobile-card">{movie?.title}</h6>
         <h6 className="title">{movie?.title}</h6>
-
       </div>
     </div>
   );

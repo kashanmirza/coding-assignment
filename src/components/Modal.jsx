@@ -16,9 +16,9 @@ const Modal = ({ children }) => {
       {isOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
-              <span className="close-modal" onClick={handleCloseModal}>
-                &times;
-              </span>
+            <span className="close-modal" onClick={handleCloseModal}>
+              &times;
+            </span>
 
             <div className="modal-video-container">{children}</div>
           </div>

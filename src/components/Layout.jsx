@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
       <Header />
       <div className="container">
         <Modal>
-          <YouTubePlayer/>
+          <YouTubePlayer />
         </Modal>
         {children}
       </div>

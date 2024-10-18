@@ -1,7 +1,7 @@
-import React from 'react';
-import '../styles/spinner.scss';
+import React from "react";
+import "../styles/spinner.scss";
 
-const Spinner = ({ size = 'medium'}) => {
+const Spinner = ({ size = "medium" }) => {
   return (
     <div className={`spinner ${size}`}>
       <div className="double-bounce1"></div>
