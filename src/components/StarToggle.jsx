@@ -4,7 +4,7 @@ import starredSlice from "../data/starredSlice";
 const StarToggle = ({ movie }) => {
   const dispatch = useDispatch();
   const { starredMovies } = useSelector((state) => state.starred);
-  const { starMovie, unstarMovie } = starredSlice;
+  const { starMovie, unstarMovie } = starredSlice.actions;
   const isStarred = starredMovies.some(
     (starredMovie) => starredMovie.id === movie.id
   );

@@ -1,10 +1,15 @@
-import '../styles/header.scss'
+import "../styles/header.scss";
 
 const FallbackMessage = ({ message }) => {
-  
   return (
-    <div className="no-trailer-message"><h6>{message}</h6></div>
-  )
-}
+    <>
+      {message && (
+        <div className="no-trailer-message">
+          <h6>{message}</h6>
+        </div>
+      )}
+    </>
+  );
+};
 
-export default FallbackMessage
+export default FallbackMessage;

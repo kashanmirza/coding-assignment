@@ -3,8 +3,8 @@ import { MOVIE_BY_ID } from "../constants/endPoints";
 export const getMovie = async (id) => {
   try {
     const movieEndpoint = createApiEndpoint(
-      `${MOVIE_BY_ID}${id}`,
-      "append_to_response=videos"
+      `${MOVIE_BY_ID}/${id}`,
+      "&append_to_response=videos"
     );
     const response = await fetch(movieEndpoint);
     return response.json();
