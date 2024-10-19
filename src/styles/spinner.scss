@@ -1,0 +1,49 @@
+.spinner {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin: auto;
+    display: inline-block;
+    &.small {
+      width: 20px;
+      height: 20px;
+    }
+  
+    &.medium {
+      width: 40px;
+      height: 40px;
+    }
+  
+    &.large {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .double-bounce1,
+    .double-bounce2 {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px solid;
+      border-color: #000851;
+      background: currentColor;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: bounce 2.0s infinite ease-in-out;
+    }
+  
+    .double-bounce2 {
+      animation-delay: -1.0s;
+    }
+  
+    @keyframes bounce {
+      0%, 100% {
+        transform: scale(0.0);
+      }
+      50% {
+        transform: scale(1.0);
+      }
+    }
+  }
+  
