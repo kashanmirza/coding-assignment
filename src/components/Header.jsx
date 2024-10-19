@@ -1,8 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react"; // Import useState
+import { useState, useEffect } from "react";
 import { createSearchParams, useSearchParams } from "react-router-dom";
 import moviesSlice, { fetchMovies } from "../data/moviesSlice";
+import { debounce } from "../helpers/debounce";
 import "../styles/header.scss";
 
 const Header = () => {
@@ -14,18 +15,18 @@ const Header = () => {
 
   const getSearchResults = (query) => {
     dispatch(resetMovies());
-    dispatch(fetchMovies({ query, page: 1 }));
-  };
-
-  useEffect(() => {
-    console.log("Header : ", query);
     if (query) {
-      getSearchResults(query);
+      dispatch(fetchMovies({ query, page: 1 }));
       setSearchParams(createSearchParams({ search: query }));
     } else {
-      dispatch(resetMovies());
       dispatch(fetchMovies({ query: "", page: 1 }));
     }
+  };
+
+  const debouncedSearchResults = debounce(getSearchResults, 300)
+
+  useEffect(() => {
+    debouncedSearchResults(query);
   }, [query]);
 
   return (
